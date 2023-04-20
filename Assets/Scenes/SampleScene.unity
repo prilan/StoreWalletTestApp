@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6bf7756ed84de4bb9a408aa21f8418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinsText: {fileID: 8478081783710981489}
   coinsIncrementButton: {fileID: 1340595176}
   coinsZeroButton: {fileID: 8478081783710981488}
   crystsalsIncrementButton: {fileID: 321141326}
@@ -941,5 +942,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8478081783710981489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8478081783120603716, guid: cd1e839c8d8e2484cb580e72390d1b00, type: 3}
+  m_PrefabInstance: {fileID: 8478081783710981487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
