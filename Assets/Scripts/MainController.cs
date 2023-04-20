@@ -21,7 +21,7 @@ public class MainController : MonoBehaviour
 
     private void OnCoinsIncrementnButtonClick()
     {
-        //WalletUtility.
+        WalletUtility.Wallet.
         //Wallet.
     }
 
