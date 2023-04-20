@@ -1,0 +1,3 @@
+[submodule "Assets/StoreWalletUtility"]
+	path = Assets/StoreWalletUtility
+	url = https://github.com/prilan/StoreWalletUtility
