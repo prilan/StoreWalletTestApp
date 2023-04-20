@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using WalletUtility;
 
 public class MainController : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class MainController : MonoBehaviour
 
     private void OnCoinsIncrementnButtonClick()
     {
-        
+        //WalletUtility.
+        //Wallet.
     }
 
     private void OnCoinsZeroButtonClick()
