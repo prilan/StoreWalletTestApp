@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,6 +65,9 @@ namespace MainApp
             {
                 UpdateText(currencyText, currency.CurrencyValue);
             }
+
+            AppModel.Instance.UpdateDataState();
+            SaveStateManager.Instance.SaveSystem.SaveDataState(AppModel.Instance.SaveDataState);
         }
 
         private void UpdateText(TMP_Text targetText, int value)
