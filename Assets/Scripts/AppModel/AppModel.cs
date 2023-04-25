@@ -18,12 +18,12 @@ namespace MainApp
         {
             SaveDataState.SaveData.currencies = new List<CurrencyFormat>();
 
-            /*for (int index = 0; index < Wallet.Instance.Currencies; index++) {
-
+            foreach (Currency currency in Wallet.Instance.Currencies) {
                 CurrencyFormat currencyFormat = new CurrencyFormat();
-
+                currencyFormat.currencyType = currency.CurrencyName;
+                currencyFormat.value = currency.CurrencyValue;
                 SaveDataState.SaveData.currencies.Add(currencyFormat);
-            }*/
+            }
         }
 
         public void LoadSavedState()

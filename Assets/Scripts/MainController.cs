@@ -1,3 +1,4 @@
+using SaveState;
 using SaveSystem;
 using System;
 using System.Collections;
@@ -34,6 +35,8 @@ namespace MainApp
         {
             Wallet.Instance.CreateCurrency(CurrencyTypeUtility.GetCurrencyByCurrencyType(CurrencyType.Coins));
             Wallet.Instance.CreateCurrency(CurrencyTypeUtility.GetCurrencyByCurrencyType(CurrencyType.Crystals));
+
+            LoadCurrenciesFromSavedState();
         }
 
         private void OnCoinsIncrementnButtonClick()
@@ -61,13 +64,43 @@ namespace MainApp
             string currencyString = CurrencyTypeUtility.GetCurrencyByCurrencyType(currencyType);
             action(currencyString);
             Currency currency = Wallet.Instance.GetCurrency(currencyString);
-            if (currency != null)
-            {
+            if (currency != null) {
                 UpdateText(currencyText, currency.CurrencyValue);
             }
 
+            SaveCurrenciesState();
+        }
+
+        private static void SaveCurrenciesState()
+        {
             AppModel.Instance.UpdateDataState();
             SaveStateManager.Instance.SaveSystem.SaveDataState(AppModel.Instance.SaveDataState);
+        }
+
+        private void LoadCurrenciesFromSavedState()
+        {
+            if (SaveStateManager.Instance.SaveSystem.HasSaveDataState()) {
+                AppModel.Instance.SaveDataState = SaveStateManager.Instance.SaveSystem.LoadDataState();
+                foreach (var currencyItem in AppModel.Instance.SaveDataState.SaveData.currencies) {
+                    Currency currency = Wallet.Instance.GetCurrency(currencyItem.currencyType);
+                    currency.SetValue(currencyItem.value);
+                    CurrencyType currencyType = CurrencyTypeUtility.GetEnumValueFromDescription<CurrencyType>(currency.CurrencyName);
+                    TMP_Text textMesh = GetTextMeshByCurrencyType(currencyType);
+                    UpdateText(textMesh, currency.CurrencyValue);
+                }
+            }
+        }
+
+        private TMP_Text GetTextMeshByCurrencyType(CurrencyType currencyType)
+        {
+            switch (currencyType) {
+                case CurrencyType.Coins:
+                    return coinsText;
+                case CurrencyType.Crystals:
+                    return crystsalsText;
+                default:
+                    return null;
+            }
         }
 
         private void UpdateText(TMP_Text targetText, int value)
